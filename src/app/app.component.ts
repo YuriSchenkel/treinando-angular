@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import User from './components/interfaces/usuario.interface';
+import { BootstrapOptions, Component } from '@angular/core';
+import Usuario from './interfaces/usuarios.interface';
 
 @Component({
   selector: 'app-root',
@@ -7,28 +7,28 @@ import User from './components/interfaces/usuario.interface';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  userDados: User = {
-    nome: 'Joaquim',
-    idade: 20,
-    profissao: 'Garçom',
-  };
+  editou: boolean = false;
 
-  usuarioDadosDois: User = {
-    nome: 'Alan',
-    idade: 32,
-    profissao: 'Jogador',
-  };
+  usuarios: Usuario[] = [
+    {
+      id: 0,
+      nome: 'Yuri',
+      idade: 18,
+      email: 'yuri.teze@xpert.com.br',
+      profissao: 'Desenvolvedor Web (Estagiário)',
+    },
+    {
+      id: 1,
+      nome: 'Jaime',
+      idade: 29,
+      email: 'jaime@gmail.com',
+      profissao: 'Padeiro',
+    },
+  ];
 
-  usuarioDados: User = {
-    nome: 'Yuri',
-    idade: 18,
-    profissao: 'Desenvolvedor Web',
-  };
-
-  userData = {
-    email: 'joaquim@gmail.com',
-    role: 'Admin',
-  };
-
+  excluirUsuario(id: number) {
+    const find = this.usuarios.findIndex((usuario) => usuario.id === id);
+    this.usuarios.splice(find, 1);
+  }
   title = 'aula01-angular';
 }

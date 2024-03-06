@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import User from '../interfaces/usuario.interface';
 
 @Component({
   selector: 'app-parent-data',
@@ -7,10 +6,10 @@ import User from '../interfaces/usuario.interface';
   styleUrls: ['./parent-data.component.css'],
 })
 export class ParentDataComponent {
-  @Input() usuarioDadosDois!: User;
-  @Input() usuarioDados!: User;
-  @Input() userDados!: User;
-  @Input() userData!: { email: string; role: string };
+  // @Input() usuarioDadosDois!: User;
+  // @Input() usuarioDados!: User;
+  // @Input() userDados!: User;
+  // @Input() userData!: { email: string; role: string };
 
   constructor() {}
 }
