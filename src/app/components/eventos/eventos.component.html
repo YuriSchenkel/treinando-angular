@@ -1,0 +1,12 @@
+<div class="class">
+  <h1>Eventos</h1>
+
+  <ul>
+    <li *ngFor="let filme of filmes">
+      {{ filme }}
+    </li>
+  </ul>
+
+  <p>{{ movie }}</p>
+  <button (click)="changeMovie()">Clique em mim!</button>
+</div>

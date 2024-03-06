@@ -1,0 +1,14 @@
+<div class="class">
+  <h1>Rendenização condicional</h1>
+  <h2 *ngIf="canShow">Foi permitido mostrar isto!</h2>
+  <p *ngIf="name === 'Yuri'; else notIguals">Bem-vindo Yuri!</p>
+  <ng-template #notIguals>
+    <div>
+      <p>Seu nome não é Yuri!</p>
+    </div>
+  </ng-template>
+  <p *ngIf="idade >= 18; else notTrue">É maior de idade!</p>
+  <ng-template #notTrue>
+    <div>Não é maior de idade!</div>
+  </ng-template>
+</div>
