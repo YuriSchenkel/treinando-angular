@@ -1,0 +1,14 @@
+<div class="class">
+  <form>
+    <input
+      type="text"
+      ng-model="nomeTime"
+      nomeTime="nomeTime"
+      placeholder="Informe o nome do time"
+    />
+    <input type="submit" value="enviar" />
+  </form>
+  <div *ngIf="nomeTime !== ''">
+    <p>{{ nomeTime }}</p>
+  </div>
+</div>
