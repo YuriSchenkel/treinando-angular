@@ -1,0 +1,71 @@
+<div class="container">
+  <h2>Usuários</h2>
+  <!-- <div class="table">
+    <div class="table-header">
+      <div class="header-item">Nome</div>
+      <div class="header-item">Idade</div>
+      <div class="header-item">E-mail</div>
+      <div class="header-item">Profissão</div>
+      <div class="header-item"></div>
+      <div class="header-item"></div>
+    </div> -->
+  <!-- <app-usuario-component></app-usuario-component> -->
+
+  <!-- <div class="alertEditar" *ngIf="usuario.editou && !usuario.salvou">
+      <div class="campoEditar">
+        <span class="label">Nome:</span>
+        <input type="text" class="form-control" [(ngModel)]="usuario.nome" />
+      </div>
+      <div class="campoEditar">
+        <span class="label">Idade:</span>
+        <input type="number" class="form-control" [(ngModel)]="usuario.idade" />
+      </div>
+      <div class="campoEditar">
+        <span class="label">E-mail:</span>
+        <input type="email" class="form-control" [(ngModel)]="usuario.email" />
+      </div>
+      <div class="campoEditar">
+        <span class="label">Profissão:</span>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="usuario.profissao"
+        />
+      </div>
+      <div class="buttons-container">
+        <button class="btnSalvar" (click)="salvarDados(usuario)">Salvar</button>
+        <button class="btnFechar" (click)="usuario.editou = false">Sair</button>
+      </div>
+    </div>
+  </div> -->
+  <!-- </div> -->
+</div>
+
+<!-- <button class="btnExcluir" (click)="usuarios.adicionarUsuario(meuUser)">
+  Adicionar Usuários
+</button> -->
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>E-mail</th>
+      <th>Profissão</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.idade }}</td>
+      <td>{{ usuario.email }}</td>
+      <td>{{ usuario.profissao }}</td>
+      <td>
+        <!-- <button class="btnEditar" (click)="usuario.editou = true">
+          Editar
+        </button>
+        <button class="btnExcluir">Excluir</button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>

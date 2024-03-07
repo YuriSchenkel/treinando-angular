@@ -1,86 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
-
-*{
-    box-sizing: border-box;
-    font-family: 'Montserrat',sans-serif;
-}
-
-body{
-    min-height: 100vh;
-    margin: 0;
-    overflow-x: hidden;
-    background-color: #EFF3FC;
-}
-
-.alertEditar{
-    position: absolute;
-    margin-left: 400px;
-    width: 200px;
-    height: 200px;
-    background-color: white;
-    border: 1px solid black;
-}
-
-.btnEditar{
-    margin-top: 8px;
-    margin-left: 50px;
-    width: 60px;
-    height: 25px;
-    background-color: royalblue;
-    border-radius: 4px;
-}
-
-.btnExcluir{
-    margin-top: 8px;
-    width: 60px;
-    height: 25px;
-    background-color: red;  
-    border-radius: 4px
-}
-
-
-.body-column{
-    border: 1px solid black;
-
-}
-
-.container{
-    max-width: 1100px;
+.container {
+    max-width: 800px;
     margin: 0 auto;
-    padding: 3rem 2rem;
-    }
-    .table{
-        margin-top: 4rem;
-        width: 100%;
-
-        .table-header{
-            border: 1px solid black;
-            display: grid;
-            grid-template-columns: repeat(6,1fr);
-            font-size: 0.7rem;
-            margin: 0 0.5rem;
-            color: #6e768b;
-            h4{
-                margin-left: 20px;
-                color: black;
-            }
-            h2{
-                margin-left: 15px;
-                color: blue;
-            }
-        }
-        .table-body{
-            display: grid;
-            grid-template-columns: repeat(6,1fr);
-            font-size: 0.7rem;
-            margin: 0 0.5rem;
-            color: #6e768b;
-            img{
-                width: 4rem;
-            }
-            h4{
-                font-weight: 500;
-                font-size: 0.85rem;
-            }
-        }
-    }
+    padding: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .header-item,
+  .row-item {
+    flex: 1;
+  }
+  
+  .alertEditar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .campoEditar {
+    margin-bottom: 15px; /* Espaçamento maior entre os campos */
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .btnEditar,
+  .btnExcluir,
+  .btnSalvar {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .btnEditar:hover,
+  .btnExcluir:hover,
+  .btnSalvar:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btnEditar,
+  .btnExcluir,
+  .btnSalvar {
+    margin-right: 5px;
+  }
+  
+  .buttons-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .buttons-container button {
+    margin-right: 10px;
+  }
+  
+h3 {
+  color: #0056b3;
+}

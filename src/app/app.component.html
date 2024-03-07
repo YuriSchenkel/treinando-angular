@@ -1,23 +1,2 @@
-<div class="container">
-  <h2>Usuários</h2>
-  <div class="table">
-    <div class="table-header">
-      <h2>Nome</h2>
-      <h2>Idade</h2>
-      <h2>E-mail</h2>
-      <h2>Profissão</h2>
-    </div>
-
-    <div class="table-header" *ngFor="let usuario of usuarios">
-      <h4>{{ usuario.nome }}</h4>
-      <h4>{{ usuario.idade }}</h4>
-      <h4>{{ usuario.email }}</h4>
-      <h4>{{ usuario.profissao }}</h4>
-      <button class="btnEditar" (click)="editou = true">Editar</button>
-      <button class="btnExcluir" (click)="excluirUsuario(usuario.id!)">
-        Excluir
-      </button>
-      <div class="alertEditar" *ngIf="editou === true"></div>
-    </div>
-  </div>
-</div>
+<h3>TETINHA</h3>
+<app-usuarios-component></app-usuarios-component>

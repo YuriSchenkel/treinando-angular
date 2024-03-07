@@ -12,6 +12,9 @@ import { ChangeNumberComponent } from './components/change-number/change-number.
 import { ListRenderComponent } from './components/list-render/list-render.component';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { TwoWayComponent } from './components/two-way/two-way.component';
+import { FormsModule } from '@angular/forms';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { UsuariosService } from './pages/usuarios/usuarios.service';
 
 @NgModule({
   declarations: [
@@ -26,8 +29,9 @@ import { TwoWayComponent } from './components/two-way/two-way.component';
     ListRenderComponent,
     PipesComponent,
     TwoWayComponent,
+    UsuariosComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
