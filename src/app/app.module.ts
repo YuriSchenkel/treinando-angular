@@ -15,6 +15,7 @@ import { TwoWayComponent } from './components/two-way/two-way.component';
 import { FormsModule } from '@angular/forms';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuariosService } from './pages/usuarios/usuarios.service';
+import { UsuarioComponent } from './pages/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { UsuariosService } from './pages/usuarios/usuarios.service';
     PipesComponent,
     TwoWayComponent,
     UsuariosComponent,
+    UsuarioComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

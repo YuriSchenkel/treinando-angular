@@ -1,0 +1,21 @@
+<div class="flagEditar">
+  <div class="campoEditar">
+    <span class="label">Nome:</span>
+    <input type="text" class="form-control" [(ngModel)]="usuario.nome" />
+  </div>
+  <div class="campoEditar">
+    <span class="label">Idade:</span>
+    <input type="number" class="form-control" [(ngModel)]="usuario.idade" />
+  </div>
+  <div class="campoEditar">
+    <span class="label">E-mail:</span>
+    <input type="email" class="form-control" [(ngModel)]="usuario.email" />
+  </div>
+  <div class="campoEditar">
+    <input type="text" class="form-control" [(ngModel)]="usuario.profissao" />
+    <div class="class-row">
+      <button class="btnSalvar" (click)="salvarUsuario()">Salvar</button>
+      <button class="btnFechar" (click)="fecharEdicao()">X</button>
+    </div>
+  </div>
+</div>

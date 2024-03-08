@@ -1,2 +1,12 @@
-<h3>TETINHA</h3>
-<app-usuarios-component></app-usuarios-component>
+<app-usuarios-component
+  (indexExcluir)="excluirUsuario($event)"
+  [usuarios]="usuarios"
+  (emissaoDeEdicao)="edicaoUsuario($event)"
+></app-usuarios-component>
+<div *ngIf="recebeuUser">
+  <app-usuario-component
+    (fecharJanela)="fecharEdicao($event)"
+    (usuarioSalvar)="salvarUsuario($event)"
+    [usuario]="usuarioSelecionado"
+  ></app-usuario-component>
+</div>

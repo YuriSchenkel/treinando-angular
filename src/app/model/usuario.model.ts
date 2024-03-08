@@ -4,6 +4,7 @@ export class UsuariosModel {
   public idade: number;
   public email?: string;
   public profissao?: string;
+  public editou?: boolean;
 
   constructor() {
     this.id = 0;

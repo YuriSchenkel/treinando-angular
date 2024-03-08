@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UsuariosModel } from './model/usuario.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UsuariosModel } from '../../model/usuario.model';
 import { UsuariosService } from './usuarios.service';
 import { usuariosMock } from 'src/app/mock/usuarios.mock';
 
@@ -8,12 +8,17 @@ import { usuariosMock } from 'src/app/mock/usuarios.mock';
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css'],
 })
-export class UsuariosComponent implements OnInit {
-  public usuarios: UsuariosModel[] = [];
+export class UsuariosComponent {
+  @Input() usuarios: UsuariosModel[] = [];
+  @Output() indexExcluir: EventEmitter<number> = new EventEmitter<number>();
+  @Output() emissaoDeEdicao: EventEmitter<UsuariosModel> =
+    new EventEmitter<UsuariosModel>();
 
-  // constructor() {}
+  editarUsuario(user?: UsuariosModel) {
+    this.emissaoDeEdicao.emit(user);
+  }
 
-  ngOnInit(): void {
-    this.usuarios = usuariosMock;
+  excluirUsuario(id: number) {
+    this.indexExcluir.emit(id);
   }
 }
