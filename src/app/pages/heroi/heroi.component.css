@@ -6,7 +6,7 @@
   font-family: sans-serif;
 }
 .styled-table thead tr {
-  background-color: rebeccapurple;
+  background-color: blue;
   color: #ffffff;
   text-align: left;
 }
@@ -21,20 +21,22 @@
   background-color: #f3f3f3;
 }
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid rebeccapurple;
+  border-bottom: 2px solid blue;
 }
 .styled-table tbody tr.active-row {
   font-weight: bold;
-  color: rebeccapurple;
+  color: blue;
 }
 h2 {
-  color: rebeccapurple;
+  color: blue;
 }
-.btn {
-  margin-left: 8px;
-  height: 35px;
+.btnExcluir {
+  background-color: red;
+  margin-left: 5px;
 }
-
+.btnEditar {
+  background-color: paleturquoise;
+}
 .flagEditar {
   width: 80%;
   max-width: 400px;

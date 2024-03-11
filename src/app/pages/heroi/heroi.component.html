@@ -1,0 +1,11 @@
+<div class="flagEditar">
+  <div class="campoEditar">
+    <span class="label">ID: {{ hero.id }}</span>
+  </div>
+  <div class="campoEditar">
+    <span class="label">Nome:</span>
+    <input type="text" class="form-control" [(ngModel)]="hero.name" />
+  </div>
+  <button class="btnSalvar" (click)="emissaoSalvou(hero)">Salvar</button>
+  <button class="btnFechar" (click)="emissaoFechou()">X</button>
+</div>

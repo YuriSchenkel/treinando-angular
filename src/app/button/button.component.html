@@ -1,0 +1,7 @@
+<div class="btn-group" role="group" aria-label="Basic example">
+  <ng-container *ngFor="let button of btnEscolha">
+    <button class="btn" type="button" (click)="onClick(button)">
+      {{ button }}
+    </button>
+  </ng-container>
+</div>

@@ -16,6 +16,9 @@ import { FormsModule } from '@angular/forms';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { UsuariosService } from './pages/usuarios/usuarios.service';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { HeroesComponent } from './pages/herois/herois.component';
+import { HeroiComponent } from './pages/heroi/heroi.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { UsuarioComponent } from './pages/usuario/usuario.component';
     TwoWayComponent,
     UsuariosComponent,
     UsuarioComponent,
+    HeroesComponent,
+    HeroiComponent,
+    ButtonComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

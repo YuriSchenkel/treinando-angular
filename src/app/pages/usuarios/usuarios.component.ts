@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UsuariosModel } from '../../model/usuario.model';
-import { UsuariosService } from './usuarios.service';
-import { usuariosMock } from 'src/app/mock/usuarios.mock';
 
 @Component({
   selector: 'app-usuarios-component',

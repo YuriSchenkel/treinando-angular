@@ -1,0 +1,9 @@
+button {
+  background-color: rebeccapurple;
+  border: 1px solid black;
+  color: white;
+  padding: 10px 24px;
+}
+button:active {
+  background-color: blue;
+}
