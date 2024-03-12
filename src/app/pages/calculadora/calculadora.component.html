@@ -1,0 +1,27 @@
+<h2>Calculadora</h2>
+
+<div class="calculator">
+  <input type="text" class="display" disabled [(ngModel)]="visor" />
+  <div class="keys">
+    <button (click)="onClickNumber('7')">7</button>
+    <button (click)="onClickNumber('8')">8</button>
+    <button (click)="onClickNumber('9')">9</button>
+    <button (click)="onClickOperation(' x ')">x</button>
+    <button (click)="onClickNumber('4')">4</button>
+    <button (click)="onClickNumber('5')">5</button>
+    <button (click)="onClickNumber('6')">6</button>
+    <button (click)="onClickOperation(' ÷ ')">÷</button>
+    <button (click)="onClickNumber('1')">1</button>
+    <button (click)="onClickNumber('2')">2</button>
+    <button (click)="onClickNumber('3')">3</button>
+    <button (click)="onClickOperation(' - ')">-</button>
+    <button (click)="onClickClear()">C</button>
+    <button (click)="onClickNumber('0')">0</button>
+    <button (click)="onClickNumber('.')">,</button>
+    <button (click)="onClickOperation(' + ')">+</button>
+    <button class="sumiu"></button>
+    <button class="sumiu"></button>
+    <button class="sumiu"></button>
+    <button>=</button>
+  </div>
+</div>

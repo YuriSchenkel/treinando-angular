@@ -14,11 +14,13 @@ import { PipesComponent } from './components/pipes/pipes.component';
 import { TwoWayComponent } from './components/two-way/two-way.component';
 import { FormsModule } from '@angular/forms';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
-import { UsuariosService } from './pages/usuarios/usuarios.service';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { HeroesComponent } from './pages/herois/herois.component';
 import { HeroiComponent } from './pages/heroi/heroi.component';
-import { ButtonComponent } from './button/button.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { CalculadoraComponent } from './pages/calculadora/calculadora.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,10 @@ import { ButtonComponent } from './button/button.component';
     UsuarioComponent,
     HeroesComponent,
     HeroiComponent,
-    ButtonComponent,
+    ToolbarComponent,
+    CalculadoraComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, MatToolbarModule, MatButtonModule],
   providers: [],
   bootstrap: [AppComponent],
 })

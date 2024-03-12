@@ -4,10 +4,18 @@
   integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
   crossorigin="anonymous"
 />
-<app-button
+<app-toolbar
   [btnEscolha]="btnEscolha"
   (emissaoClick)="onClickBtn($event)"
-></app-button>
+></app-toolbar>
+<div *ngIf="escolheuCalculadora">
+  <app-calculadora
+    [visor]="visor"
+    (emissaoNumero)="receberNumero($event)"
+    (emissaoClear)="receberClear()"
+    (emissaoOperacao)="receberOperacao($event)"
+  ></app-calculadora>
+</div>
 <div *ngIf="escolheuUsuario">
   <app-usuarios-component
     (indexExcluir)="excluirUsuario($event)"

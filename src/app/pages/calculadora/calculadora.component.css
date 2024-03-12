@@ -1,0 +1,43 @@
+.calculator {
+  margin-left: 450px;
+  height: 380px;
+  width: 360px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+.display {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-align: right;
+}
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+button {
+  width: 70px;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.clear {
+  grid-column: span 2;
+}
+.calculate {
+  grid-column: span 2;
+  background-color: #ff5722;
+  color: #fff;
+}
+
+.sumiu {
+  color: #fff;
+  background-color: #fff;
+}

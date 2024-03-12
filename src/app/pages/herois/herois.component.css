@@ -30,9 +30,8 @@
 h2 {
   color: rebeccapurple;
 }
-.btnSelecionar {
-  background-color: palegreen;
-  margin-left: 5px;
+button {
+  height: 35px;
 }
 .flagEditar {
   width: 80%;
