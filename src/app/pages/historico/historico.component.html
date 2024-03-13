@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <h3 class="title">History</h3>
+    <button
+      class="btn-sm btn-danger"
+      style="text-align: center"
+      (click)="onEmissaoFecharHistorico()"
+    >
+      X
+    </button>
+  </div>
+  <ng-container *ngFor="let operacao of historicoCalculadora">
+    <p>
+      {{
+        operacao.numeroUm +
+          operacao.operacao +
+          operacao.numeroDois +
+          " = " +
+          operacao.resultado
+      }}
+    </p>
+  </ng-container>
+</div>

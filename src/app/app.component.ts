@@ -4,6 +4,7 @@ import { usuariosMock } from './mock/usuarios.mock';
 import { heroesMock } from './mock/heroes.mock';
 import { HeroisModel } from './model/heroi.model';
 import { buttonMock } from './mock/button.mock';
+import CalculadoraInterface from './interfaces/calculadora.interface';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +14,19 @@ import { buttonMock } from './mock/button.mock';
 export class AppComponent implements OnInit {
   title = 'aula01-angular';
   public btnEscolha: string[] = [];
+  public historicoCalculadora: CalculadoraInterface[] = [];
   public escolheuCalculadora: boolean = false;
   public numeroUm: number = 0;
   public numeroDois: number = 0;
   public operacao: string = '';
   public visor: string = '0';
   public tamanho: number = 0;
+  public resultado: number = 0;
   public contVirgula: number = 0;
   public contOperacao: number = 0;
+  public validacaoRecebeuIgual: boolean = false;
+  public validacaoOperacaoDireta: boolean = false;
+  public escolheuHistorico: boolean = false;
   public escolheuHeroi: boolean = false;
   public heroes: HeroisModel[] = [];
   public heroiSelecionado: HeroisModel = new HeroisModel();
@@ -79,61 +85,230 @@ export class AppComponent implements OnInit {
     this.escolheuUsuario = mostrar[2];
   }
 
-  receberNumero(numero: string) {
+  onReceberNumero(numero: string) {
     let verificacao = true;
 
-    if (numero === ',') {
+    if (this.validacaoRecebeuIgual) {
+      this.contOperacao = 0;
+      this.visor = '0';
+      this.validacaoRecebeuIgual = false;
+    }
+
+    if (numero === '.') {
       this.contVirgula++;
     }
     if (this.contVirgula > 1) {
       verificacao = false;
       this.contVirgula--;
     }
-    if (this.visor === '0' && numero !== ',') {
+    if (this.visor === '0' && numero !== '.') {
       this.visor = '';
     }
     if (verificacao) {
       this.visor += numero;
-      if (this.contOperacao > 0) {
-        let string = this.visor.slice(this.tamanho);
-        this.numeroDois = Number(string);
-        console.log('Number 2 ' + this.numeroDois);
-        console.log(this.tamanho + '  ' + this.visor);
+      if (this.contOperacao > 0 || this.validacaoOperacaoDireta) {
+        if (this.numeroDois === 0 && numero === '.') {
+          this.numeroDois = 0;
+          this.validacaoOperacaoDireta = false;
+        } else {
+          let string = this.visor.slice(this.tamanho);
+          this.numeroDois = Number(string);
+          this.validacaoOperacaoDireta = false;
+        }
       } else {
-        this.tamanho = this.visor.length + 3;
-        this.numeroUm = Number(this.visor);
-        console.log('Number 1 ' + this.numeroUm);
+        if (this.numeroDois === 0 && numero === '.') {
+          this.numeroDois = 0;
+          this.validacaoOperacaoDireta = false;
+        } else {
+          let string = this.visor.slice(this.tamanho);
+          this.numeroDois = Number(string);
+          this.validacaoOperacaoDireta = false;
+        }
       }
     }
   }
 
-  receberClear() {
+  onReceberClear() {
     this.visor = '0';
     this.contVirgula = 0;
     this.contOperacao = 0;
+    this.numeroDois = 0;
+    this.numeroUm = 0;
+    this.operacao = '';
   }
 
-  receberOperacao(operacao: string) {
-    if (this.contOperacao > 0) {
+  onReceberOperacao(operacao: string) {
+    let verificacao = true;
+
+    if (this.numeroDois !== 0 && this.contOperacao > 0 && verificacao) {
+      verificacao = false;
+      this.operacaoDireta(operacao);
+      this.contOperacao++;
+    }
+    if (this.contOperacao > 0 && verificacao) {
       const string = this.visor.slice(0, -3);
       this.visor = string;
     }
-    this.visor += operacao;
-    this.contOperacao++;
-  }
-  somar(numeroUm: number, numeroDois: number) {
-    let resultado = numeroUm + numeroDois;
-  }
-
-  subtrair(numeroUm: number, numeroDois: number) {
-    let resultado = numeroUm - numeroDois;
+    if (verificacao) {
+      this.visor += operacao;
+      this.operacao = operacao;
+      this.contOperacao++;
+    }
   }
 
-  multiplicar(numeroUm: number, numeroDois: number) {
-    let resultado = numeroUm * numeroDois;
+  operacaoDireta(operacao: string) {
+    switch (this.operacao) {
+      case ' + ':
+        this.somar(operacao);
+        break;
+      case ' - ':
+        this.subtrair(operacao);
+        break;
+      case ' x ':
+        this.multiplicar(operacao);
+        break;
+      case ' ÷ ':
+        this.dividir(operacao);
+        break;
+    }
   }
 
-  dividir(numeroUm: number, numeroDois: number) {
-    let resultado = numeroDois / numeroDois;
+  onReceberIgual() {
+    switch (this.operacao) {
+      case ' + ':
+        this.somar();
+        this.validacaoRecebeuIgual = true;
+        break;
+      case ' - ':
+        this.subtrair();
+        this.validacaoRecebeuIgual = true;
+        break;
+      case ' x ':
+        this.multiplicar();
+        this.validacaoRecebeuIgual = true;
+        break;
+      case ' ÷ ':
+        this.dividir();
+        this.validacaoRecebeuIgual = true;
+        break;
+    }
+  }
+
+  onReceberHistorico() {
+    this.escolheuHistorico = true;
+  }
+
+  onFecharHistorico() {
+    this.escolheuHistorico = false;
+  }
+
+  somar(operacao?: string) {
+    this.resultado = this.numeroUm + this.numeroDois;
+    console.log(
+      this.numeroUm + '   ' + this.operacao + '   ' + this.numeroDois
+    );
+    if (
+      this.numeroUm !== 0 &&
+      this.operacao !== '' &&
+      this.numeroDois !== 0 &&
+      operacao !== undefined
+    ) {
+      this.visor = this.resultado.toString() + operacao;
+      this.contOperacao = 0;
+      this.validacaoOperacaoDireta = true;
+    } else {
+      this.visor = this.resultado.toString();
+    }
+    const input: CalculadoraInterface = {
+      numeroUm: this.numeroUm,
+      operacao: this.operacao,
+      numeroDois: this.numeroDois,
+      resultado: this.resultado,
+    };
+    this.historicoCalculadora.push(input);
+    this.numeroUm = this.resultado;
+    this.operacao = operacao!;
+  }
+
+  subtrair(operacao?: string) {
+    this.resultado = this.numeroUm - this.numeroDois;
+    console.log(
+      this.numeroUm + '   ' + this.operacao + '   ' + this.numeroDois
+    );
+    if (
+      this.numeroUm !== 0 &&
+      this.operacao !== '' &&
+      this.numeroDois !== 0 &&
+      operacao !== undefined
+    ) {
+      this.visor = this.resultado.toString() + operacao;
+      this.contOperacao = 0;
+      this.validacaoOperacaoDireta = true;
+    } else {
+      this.visor = this.resultado.toString();
+    }
+    const input: CalculadoraInterface = {
+      numeroUm: this.numeroUm,
+      operacao: this.operacao,
+      numeroDois: this.numeroDois,
+      resultado: this.resultado,
+    };
+    this.historicoCalculadora.push(input);
+    this.numeroUm = this.resultado;
+    this.operacao = operacao!;
+  }
+
+  multiplicar(operacao?: string) {
+    this.resultado = this.numeroUm * this.numeroDois;
+    if (
+      this.numeroUm !== 0 &&
+      this.operacao !== '' &&
+      this.numeroDois !== 0 &&
+      operacao !== undefined
+    ) {
+      this.visor = this.resultado.toString() + operacao;
+      this.contOperacao = 0;
+      this.validacaoOperacaoDireta = true;
+    } else {
+      this.visor = this.resultado.toString();
+    }
+    const input: CalculadoraInterface = {
+      numeroUm: this.numeroUm,
+      operacao: this.operacao,
+      numeroDois: this.numeroDois,
+      resultado: this.resultado,
+    };
+    this.historicoCalculadora.push(input);
+    this.numeroUm = this.resultado;
+    this.operacao = operacao!;
+  }
+
+  dividir(operacao?: string) {
+    this.resultado = this.numeroUm / this.numeroDois;
+
+    console.log(
+      this.numeroUm + '   ' + this.operacao + '   ' + this.numeroDois
+    );
+    if (
+      this.numeroUm !== 0 &&
+      this.operacao !== '' &&
+      this.numeroDois !== 0 &&
+      operacao !== undefined
+    ) {
+      this.visor = this.resultado.toString() + operacao;
+      this.contOperacao = 0;
+      this.validacaoOperacaoDireta = true;
+    } else {
+      this.visor = this.resultado.toString();
+    }
+    const input: CalculadoraInterface = {
+      numeroUm: this.numeroUm,
+      operacao: this.operacao,
+      numeroDois: this.numeroDois,
+      resultado: this.resultado,
+    };
+    this.historicoCalculadora.push(input);
+    this.numeroUm = this.resultado;
+    this.operacao = operacao!;
   }
 }

@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { CalculadoraComponent } from './pages/calculadora/calculadora.component';
+import { HistoricoComponent } from './pages/historico/historico.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CalculadoraComponent } from './pages/calculadora/calculadora.component'
     HeroiComponent,
     ToolbarComponent,
     CalculadoraComponent,
+    HistoricoComponent,
   ],
   imports: [BrowserModule, FormsModule, MatToolbarModule, MatButtonModule],
   providers: [],
