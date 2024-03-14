@@ -3,45 +3,44 @@
   rel="stylesheet"
 />
 <app-toolbar
-  [btnEscolha]="btnEscolha"
-  (emissaoClick)="onClickBtn($event)"
+  [chooseBtn]="chooseBtn"
+  (emitClick)="onClickBtn($event)"
 ></app-toolbar>
-<div *ngIf="escolheuCalculadora">
+<div *ngIf="chooseCalculator">
   <app-calculadora
-    [visor]="visor"
-    [historicoCalculadora]="historicoCalculadora"
-    [escolheuHistorico]="escolheuHistorico"
-    (emissaoHistorico)="onReceberHistorico()"
-    (emissaoIgual)="onReceberIgual()"
-    (emissaoNumero)="onReceberNumero($event)"
-    (emissaoClear)="onReceberClear()"
-    (emissaoOperacao)="onReceberOperacao($event)"
-    (emissaoFecharHistorico)="onFecharHistorico()"
+    [display]="labelDisplay"
+    (emitEquals)="onReceiveEquals()"
+    (emitNumber)="onReceiveNumber($event)"
+    (emitClear)="onReceiveClear()"
+    (emitOperation)="onReceiveOperation($event)"
   ></app-calculadora>
 </div>
-<div *ngIf="escolheuUsuario">
+<div *ngIf="chooseHistory">
+  <app-historico [historyCalculator]="historyCalculator"></app-historico>
+</div>
+<div *ngIf="chooseUser">
   <app-usuarios-component
-    (indexExcluir)="excluirUsuario($event)"
-    [usuarios]="usuarios"
-    (emissaoDeEdicao)="edicaoUsuario($event)"
+    (emitterDeleteIndex)="deleteUser($event)"
+    [users]="users"
+    (emitterEdition)="userEdition($event)"
   ></app-usuarios-component>
 </div>
-<div *ngIf="recebeuUser">
+<div *ngIf="receiveUser">
   <app-usuario-component
-    (fecharJanela)="fecharEdicao($event)"
-    (usuarioSalvar)="salvarUsuario($event)"
-    [usuario]="usuarioSelecionado"
+    (emitterCloseWindow)="closeEdition($event)"
+    (emitterSaveUser)="saveUser($event)"
+    [user]="userSelected"
   ></app-usuario-component>
 </div>
-<div *ngIf="escolheuHeroi">
-  <app-herois [heroes]="heroes" (heroiSelecionado)="selecionaHeroi($event)">
+<div *ngIf="chooseHero">
+  <app-herois [heroes]="heroes" (emitterHeroSelected)="selectHero($event)">
     ></app-herois
   >
 </div>
-<div *ngIf="recebeuHeroi">
+<div *ngIf="receiveHero">
   <app-heroi
-    [hero]="heroiSelecionado"
-    (emitirFechou)="fecharEdicaoHeroi()"
-    (emitirHeroi)="salvarHeroi($event)"
+    [hero]="heroSelected"
+    (emitterCloseEdition)="closeHeroEdition()"
+    (emitterSaveHero)="saveHero($event)"
   ></app-heroi>
 </div>

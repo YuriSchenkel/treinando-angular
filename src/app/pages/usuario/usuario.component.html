@@ -1,20 +1,20 @@
 <div class="flagEditar">
   <div class="campoEditar">
     <span class="label">Nome:</span>
-    <input type="text" class="form-control" [(ngModel)]="usuario.nome" />
+    <input type="text" class="form-control" [(ngModel)]="user.nome" />
   </div>
   <div class="campoEditar">
     <span class="label">Idade:</span>
-    <input type="number" class="form-control" [(ngModel)]="usuario.idade" />
+    <input type="number" class="form-control" [(ngModel)]="user.idade" />
   </div>
   <div class="campoEditar">
     <span class="label">E-mail:</span>
-    <input type="email" class="form-control" [(ngModel)]="usuario.email" />
+    <input type="email" class="form-control" [(ngModel)]="user.email" />
   </div>
   <div class="campoEditar">
-    <input type="text" class="form-control" [(ngModel)]="usuario.profissao" />
+    <input type="text" class="form-control" [(ngModel)]="user.profissao" />
     <div class="class-row">
-      <button class="btnSalvar" (click)="salvarUsuario()">Salvar</button>
+      <button class="btnSalvar" (click)="saveUser()">Salvar</button>
       <button class="btnFechar" (click)="fecharEdicao()">X</button>
     </div>
   </div>

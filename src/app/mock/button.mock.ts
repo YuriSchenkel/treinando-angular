@@ -1,1 +1,6 @@
-export const buttonMock: string[] = ['Calculadora', 'Heróis', 'Usuários'];
+export const buttonMock: string[] = [
+  'Calculator',
+  'History of Calculator',
+  'Heroes',
+  'Users',
+];

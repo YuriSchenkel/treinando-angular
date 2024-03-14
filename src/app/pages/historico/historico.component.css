@@ -1,29 +1,9 @@
-.container {
-  margin-left: 50px;
-  width: 350px;
-  height: 380px;
-  border: 1px solid black;
+h2 {
+  text-align: center;
+  margin-top: 30px;
 }
 
 p {
   text-align: center;
-}
-
-.title {
-  margin-right: 120px;
-  margin-top: 10px;
-}
-
-.row {
-  justify-content: end;
-  text-align: center;
-}
-
-button {
-  justify-content: center;
-  text-align: center;
-  margin-right: 5px;
-  margin-bottom: 25px;
-  margin-top: 5px;
-  padding: 3px;
+  padding: 5px;
 }

@@ -1,6 +1,6 @@
 export default interface CalculadoraInterface {
-  numeroUm: number;
-  operacao: string;
-  numeroDois: number;
-  resultado: number;
+  numberOne: number;
+  operation: string;
+  numberTwo: number;
+  result: number;
 }

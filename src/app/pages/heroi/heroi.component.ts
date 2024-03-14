@@ -9,16 +9,17 @@ import { HeroisModel } from 'src/app/model/heroi.model';
 })
 export class HeroiComponent {
   @Input() hero: HeroisModel = new HeroisModel();
-  @Output() emitirHeroi: EventEmitter<HeroisModel> =
+  @Output() emitterSaveHero: EventEmitter<HeroisModel> =
     new EventEmitter<HeroisModel>();
-  @Output() emitirFechou: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() emitterCloseEdition: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
 
-  emissaoSalvou(hero: HeroisModel) {
-    this.emitirHeroi.emit(hero);
+  saveHero(hero: HeroisModel) {
+    this.emitterSaveHero.emit(hero);
   }
 
-  emissaoFechou() {
+  closeEdition() {
     const fechou = false;
-    this.emitirFechou.emit(fechou);
+    this.emitterCloseEdition.emit(fechou);
   }
 }

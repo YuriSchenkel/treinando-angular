@@ -14,29 +14,26 @@ import { UsuariosModel } from 'src/app/model/usuario.model';
   styleUrls: ['./usuario.component.css'],
 })
 export class UsuarioComponent implements OnInit, OnChanges {
-  @Input() usuario: UsuariosModel = new UsuariosModel();
-  @Output() usuarioSalvar: EventEmitter<UsuariosModel> =
+  @Input() user: UsuariosModel = new UsuariosModel();
+  @Output() emitterSaveUser: EventEmitter<UsuariosModel> =
     new EventEmitter<UsuariosModel>();
-  @Output() fecharJanela: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() emitterCloseWindow: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
 
   ngOnChanges(): void {
-    this.usuario;
+    this.user;
   }
 
   ngOnInit(): void {
-    console.log(this.usuario);
+    console.log(this.user);
   }
 
-  pegarUsuario(user: UsuariosModel) {
-    console.log(user);
-  }
-
-  salvarUsuario() {
-    this.usuarioSalvar.emit(this.usuario);
+  saveUser() {
+    this.emitterSaveUser.emit(this.user);
   }
 
   fecharEdicao() {
     const fecharJanela = false;
-    this.fecharJanela.emit(fecharJanela);
+    this.emitterCloseWindow.emit(fecharJanela);
   }
 }

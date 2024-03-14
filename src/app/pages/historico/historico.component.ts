@@ -7,11 +7,5 @@ import CalculadoraInterface from 'src/app/interfaces/calculadora.interface';
   styleUrls: ['./historico.component.css'],
 })
 export class HistoricoComponent {
-  @Input() historicoCalculadora: CalculadoraInterface[] = [];
-  @Output() emissaoFecharHistorico: EventEmitter<boolean> =
-    new EventEmitter<boolean>();
-
-  onEmissaoFecharHistorico() {
-    this.emissaoFecharHistorico.emit();
-  }
+  @Input() historyCalculator: CalculadoraInterface[] = [];
 }

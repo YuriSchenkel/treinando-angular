@@ -13,302 +13,298 @@ import CalculadoraInterface from './interfaces/calculadora.interface';
 })
 export class AppComponent implements OnInit {
   title = 'aula01-angular';
-  public btnEscolha: string[] = [];
-  public historicoCalculadora: CalculadoraInterface[] = [];
-  public escolheuCalculadora: boolean = false;
-  public numeroUm: number = 0;
-  public numeroDois: number = 0;
-  public operacao: string = '';
-  public visor: string = '0';
-  public tamanho: number = 0;
-  public resultado: number = 0;
-  public contVirgula: number = 0;
-  public contOperacao: number = 0;
-  public validacaoRecebeuIgual: boolean = false;
-  public validacaoOperacaoDireta: boolean = false;
-  public escolheuHistorico: boolean = false;
-  public escolheuHeroi: boolean = false;
+  public chooseBtn: string[] = [];
+  public chooseCalculator: boolean = false;
+  public numberOne: number = 0;
+  public numberTwo: number = 0;
+  public operation: string = '';
+  public labelDisplay: string = '0';
+  public labelForNumberTwo: string = '';
+  public lengthDisplay: number = 0;
+  public result: number = 0;
+  public contCommaNumberOne: number = 0;
+  public contCommaNumberTwo: number = 0;
+  public contOperation: number = 0;
+  public validationReceiveEquals: boolean = false;
+  public validationDirectOperation: boolean = false;
+  public historyCalculator: CalculadoraInterface[] = [];
+  public chooseHistory: boolean = false;
+  public chooseHero: boolean = false;
   public heroes: HeroisModel[] = [];
-  public heroiSelecionado: HeroisModel = new HeroisModel();
-  public recebeuHeroi: boolean = false;
-  public escolheuUsuario: boolean = false;
-  public usuarios: UsuariosModel[] = [];
-  public usuarioSelecionado: UsuariosModel = new UsuariosModel();
-  public recebeuUser: boolean = false;
+  public heroSelected: HeroisModel = new HeroisModel();
+  public receiveHero: boolean = false;
+  public chooseUser: boolean = false;
+  public users: UsuariosModel[] = [];
+  public userSelected: UsuariosModel = new UsuariosModel();
+  public receiveUser: boolean = false;
 
   ngOnInit(): void {
-    this.usuarios = usuariosMock;
+    this.users = usuariosMock;
     this.heroes = heroesMock;
-    this.btnEscolha = buttonMock;
+    this.chooseBtn = buttonMock;
   }
 
-  edicaoUsuario(user: UsuariosModel) {
-    this.usuarioSelecionado = { ...user };
-    this.recebeuUser = true;
+  userEdition(user: UsuariosModel) {
+    this.userSelected = { ...user };
+    this.receiveUser = true;
   }
 
-  salvarUsuario(user: UsuariosModel) {
-    const id = this.usuarios.findIndex((el) => el.id === user.id);
+  saveUser(user: UsuariosModel) {
+    const id = this.users.findIndex((el) => el.id === user.id);
     usuariosMock[id] = user;
-    this.recebeuUser = false;
+    this.receiveUser = false;
   }
 
-  fecharEdicao(fechar: boolean) {
-    this.recebeuUser = fechar;
+  closeEdition(close: boolean) {
+    this.receiveUser = close;
   }
 
-  excluirUsuario(id: number) {
+  deleteUser(id: number) {
     const index = usuariosMock.findIndex((el) => el.id === id);
     usuariosMock.splice(index, 1);
   }
 
-  selecionaHeroi(hero: HeroisModel) {
-    this.heroiSelecionado = { ...hero };
-    this.recebeuHeroi = true;
+  selectHero(hero: HeroisModel) {
+    this.heroSelected = { ...hero };
+    this.receiveHero = true;
   }
 
-  salvarHeroi(hero: HeroisModel) {
+  saveHero(hero: HeroisModel) {
     const index = heroesMock.findIndex((el) => el.id === hero.id);
     heroesMock[index] = hero;
-    this.recebeuHeroi = false;
+    this.receiveHero = false;
   }
 
-  fecharEdicaoHeroi() {
-    this.recebeuHeroi = false;
+  closeHeroEdition() {
+    this.receiveHero = false;
   }
 
-  onClickBtn(mostrar: boolean[]) {
-    this.recebeuHeroi = false;
-    this.recebeuUser = false;
-    this.escolheuCalculadora = mostrar[0];
-    this.escolheuHeroi = mostrar[1];
-    this.escolheuUsuario = mostrar[2];
+  onClickBtn(show: boolean[]) {
+    this.chooseCalculator = show[0];
+    this.chooseHistory = show[1];
+    this.chooseHero = show[2];
+    this.chooseUser = show[3];
   }
 
-  onReceberNumero(numero: string) {
+  onReceiveNumber(number: string) {
     let verificacao = true;
 
-    if (this.validacaoRecebeuIgual) {
-      this.contOperacao = 0;
-      this.visor = '0';
-      this.validacaoRecebeuIgual = false;
+    if (this.validationReceiveEquals) {
+      this.contOperation = 0;
+      this.labelDisplay = '0';
+      this.labelForNumberTwo = '';
+      this.validationReceiveEquals = false;
     }
 
-    if (numero === '.') {
-      this.contVirgula++;
+    if (number === '.' && this.contOperation <= 0) {
+      this.contCommaNumberOne++;
     }
-    if (this.contVirgula > 1) {
+
+    if (this.contCommaNumberOne > 1) {
       verificacao = false;
-      this.contVirgula--;
+      this.contCommaNumberOne--;
     }
-    if (this.visor === '0' && numero !== '.') {
-      this.visor = '';
+
+    if (number === '.' && this.contOperation > 0) {
+      this.contCommaNumberTwo++;
+    }
+
+    if (
+      number === '.' &&
+      this.labelForNumberTwo === '' &&
+      this.contCommaNumberTwo > 0
+    ) {
+      verificacao = false;
+      this.labelDisplay += '0.';
+      this.labelForNumberTwo = '0.';
+      this.numberTwo = Number(this.labelForNumberTwo);
+    }
+
+    if (this.contCommaNumberTwo > 1) {
+      verificacao = false;
+      this.contCommaNumberTwo--;
+    }
+
+    if (this.labelDisplay === '0' && number !== '.') {
+      this.labelDisplay = '';
     }
     if (verificacao) {
-      this.visor += numero;
-      if (this.contOperacao > 0 || this.validacaoOperacaoDireta) {
-        if (this.numeroDois === 0 && numero === '.') {
-          this.numeroDois = 0;
-          this.validacaoOperacaoDireta = false;
-        } else {
-          let string = this.visor.slice(this.tamanho);
-          this.numeroDois = Number(string);
-          this.validacaoOperacaoDireta = false;
-        }
+      this.labelDisplay += number;
+      if (this.contOperation > 0) {
+        this.labelForNumberTwo += number;
+        this.numberTwo = Number(this.labelForNumberTwo);
+        this.validationDirectOperation = false;
       } else {
-        if (this.numeroDois === 0 && numero === '.') {
-          this.numeroDois = 0;
-          this.validacaoOperacaoDireta = false;
-        } else {
-          let string = this.visor.slice(this.tamanho);
-          this.numeroDois = Number(string);
-          this.validacaoOperacaoDireta = false;
-        }
+        this.numberOne = Number(this.labelDisplay);
       }
     }
   }
 
-  onReceberClear() {
-    this.visor = '0';
-    this.contVirgula = 0;
-    this.contOperacao = 0;
-    this.numeroDois = 0;
-    this.numeroUm = 0;
-    this.operacao = '';
+  onReceiveClear() {
+    this.labelDisplay = '0';
+    this.contCommaNumberOne = 0;
+    this.contCommaNumberTwo = 0;
+    this.contOperation = 0;
+    this.numberTwo = 0;
+    this.numberOne = 0;
+    this.labelForNumberTwo = '';
+    this.operation = '';
   }
 
-  onReceberOperacao(operacao: string) {
+  onReceiveOperation(operation: string) {
     let verificacao = true;
 
-    if (this.numeroDois !== 0 && this.contOperacao > 0 && verificacao) {
+    if (this.numberTwo !== 0 && this.contOperation > 0 && verificacao) {
       verificacao = false;
-      this.operacaoDireta(operacao);
-      this.contOperacao++;
+      this.labelForNumberTwo = '';
+      this.directOperation(operation);
+      this.contOperation = 1;
     }
-    if (this.contOperacao > 0 && verificacao) {
-      const string = this.visor.slice(0, -3);
-      this.visor = string;
+    if (this.contOperation > 0 && verificacao) {
+      const string = this.labelDisplay.slice(0, -3);
+      this.labelDisplay = string;
     }
     if (verificacao) {
-      this.visor += operacao;
-      this.operacao = operacao;
-      this.contOperacao++;
+      this.labelDisplay += operation;
+      this.operation = operation;
+      this.contOperation++;
     }
   }
 
-  operacaoDireta(operacao: string) {
-    switch (this.operacao) {
+  directOperation(operation: string) {
+    switch (this.operation) {
       case ' + ':
-        this.somar(operacao);
+        this.addition(operation);
         break;
       case ' - ':
-        this.subtrair(operacao);
+        this.subtraction(operation);
         break;
       case ' x ':
-        this.multiplicar(operacao);
+        this.multiplication(operation);
         break;
       case ' ÷ ':
-        this.dividir(operacao);
+        this.division(operation);
         break;
     }
   }
 
-  onReceberIgual() {
-    switch (this.operacao) {
+  onReceiveEquals() {
+    switch (this.operation) {
       case ' + ':
-        this.somar();
-        this.validacaoRecebeuIgual = true;
+        this.addition();
+        this.validationReceiveEquals = true;
         break;
       case ' - ':
-        this.subtrair();
-        this.validacaoRecebeuIgual = true;
+        this.subtraction();
+        this.validationReceiveEquals = true;
         break;
       case ' x ':
-        this.multiplicar();
-        this.validacaoRecebeuIgual = true;
+        this.multiplication();
+        this.validationReceiveEquals = true;
         break;
       case ' ÷ ':
-        this.dividir();
-        this.validacaoRecebeuIgual = true;
+        this.division();
+        this.validationReceiveEquals = true;
         break;
     }
   }
 
-  onReceberHistorico() {
-    this.escolheuHistorico = true;
+  onReceiveHistory() {
+    this.chooseHistory = true;
   }
 
-  onFecharHistorico() {
-    this.escolheuHistorico = false;
+  onCloseHistory() {
+    this.chooseHistory = false;
   }
 
-  somar(operacao?: string) {
-    this.resultado = this.numeroUm + this.numeroDois;
-    console.log(
-      this.numeroUm + '   ' + this.operacao + '   ' + this.numeroDois
-    );
-    if (
-      this.numeroUm !== 0 &&
-      this.operacao !== '' &&
-      this.numeroDois !== 0 &&
-      operacao !== undefined
-    ) {
-      this.visor = this.resultado.toString() + operacao;
-      this.contOperacao = 0;
-      this.validacaoOperacaoDireta = true;
+  addition(operation?: string) {
+    this.result = this.numberOne + this.numberTwo;
+
+    if (this.operation !== '' && operation !== undefined) {
+      this.labelDisplay = this.result.toString() + operation;
+      this.contOperation = 0;
+      this.validationDirectOperation = true;
     } else {
-      this.visor = this.resultado.toString();
+      this.labelDisplay = this.result.toString();
     }
     const input: CalculadoraInterface = {
-      numeroUm: this.numeroUm,
-      operacao: this.operacao,
-      numeroDois: this.numeroDois,
-      resultado: this.resultado,
+      numberOne: this.numberOne,
+      operation: this.operation,
+      numberTwo: this.numberTwo,
+      result: this.result,
     };
-    this.historicoCalculadora.push(input);
-    this.numeroUm = this.resultado;
-    this.operacao = operacao!;
+    this.historyCalculator.push(input);
+    this.numberOne = this.result;
+    this.operation = operation!;
+    this.contCommaNumberOne = 0;
+    this.contCommaNumberTwo = 0;
   }
 
-  subtrair(operacao?: string) {
-    this.resultado = this.numeroUm - this.numeroDois;
-    console.log(
-      this.numeroUm + '   ' + this.operacao + '   ' + this.numeroDois
-    );
-    if (
-      this.numeroUm !== 0 &&
-      this.operacao !== '' &&
-      this.numeroDois !== 0 &&
-      operacao !== undefined
-    ) {
-      this.visor = this.resultado.toString() + operacao;
-      this.contOperacao = 0;
-      this.validacaoOperacaoDireta = true;
+  subtraction(operation?: string) {
+    this.result = this.numberOne - this.numberTwo;
+
+    if (this.operation !== '' && operation !== undefined) {
+      this.labelDisplay = this.result.toString() + operation;
+      this.contOperation = 0;
+      this.validationDirectOperation = true;
     } else {
-      this.visor = this.resultado.toString();
+      this.labelDisplay = this.result.toString();
     }
     const input: CalculadoraInterface = {
-      numeroUm: this.numeroUm,
-      operacao: this.operacao,
-      numeroDois: this.numeroDois,
-      resultado: this.resultado,
+      numberOne: this.numberOne,
+      operation: this.operation,
+      numberTwo: this.numberTwo,
+      result: this.result,
     };
-    this.historicoCalculadora.push(input);
-    this.numeroUm = this.resultado;
-    this.operacao = operacao!;
+    this.historyCalculator.push(input);
+    this.numberOne = this.result;
+    this.operation = operation!;
+    this.contCommaNumberOne = 0;
+    this.contCommaNumberTwo = 0;
   }
 
-  multiplicar(operacao?: string) {
-    this.resultado = this.numeroUm * this.numeroDois;
-    if (
-      this.numeroUm !== 0 &&
-      this.operacao !== '' &&
-      this.numeroDois !== 0 &&
-      operacao !== undefined
-    ) {
-      this.visor = this.resultado.toString() + operacao;
-      this.contOperacao = 0;
-      this.validacaoOperacaoDireta = true;
+  multiplication(operation?: string) {
+    this.result = this.numberOne * this.numberTwo;
+    if (this.operation !== '' && operation !== undefined) {
+      this.labelDisplay = this.result.toString() + operation;
+      this.contOperation = 0;
+      this.validationDirectOperation = true;
     } else {
-      this.visor = this.resultado.toString();
+      this.labelDisplay = this.result.toString();
     }
     const input: CalculadoraInterface = {
-      numeroUm: this.numeroUm,
-      operacao: this.operacao,
-      numeroDois: this.numeroDois,
-      resultado: this.resultado,
+      numberOne: this.numberOne,
+      operation: this.operation,
+      numberTwo: this.numberTwo,
+      result: this.result,
     };
-    this.historicoCalculadora.push(input);
-    this.numeroUm = this.resultado;
-    this.operacao = operacao!;
+    this.historyCalculator.push(input);
+    this.numberOne = this.result;
+    this.operation = operation!;
+    this.contCommaNumberOne = 0;
+    this.contCommaNumberTwo = 0;
   }
 
-  dividir(operacao?: string) {
-    this.resultado = this.numeroUm / this.numeroDois;
+  division(operation?: string) {
+    this.result = this.numberOne / this.numberTwo;
 
-    console.log(
-      this.numeroUm + '   ' + this.operacao + '   ' + this.numeroDois
-    );
-    if (
-      this.numeroUm !== 0 &&
-      this.operacao !== '' &&
-      this.numeroDois !== 0 &&
-      operacao !== undefined
-    ) {
-      this.visor = this.resultado.toString() + operacao;
-      this.contOperacao = 0;
-      this.validacaoOperacaoDireta = true;
+    if (this.operation !== '' && operation !== undefined) {
+      this.labelDisplay = this.result.toString() + operation;
+      this.contOperation = 0;
+      this.validationDirectOperation = true;
     } else {
-      this.visor = this.resultado.toString();
+      this.labelDisplay = this.result.toString();
     }
     const input: CalculadoraInterface = {
-      numeroUm: this.numeroUm,
-      operacao: this.operacao,
-      numeroDois: this.numeroDois,
-      resultado: this.resultado,
+      numberOne: this.numberOne,
+      operation: this.operation,
+      numberTwo: this.numberTwo,
+      result: this.result,
     };
-    this.historicoCalculadora.push(input);
-    this.numeroUm = this.resultado;
-    this.operacao = operacao!;
+    this.historyCalculator.push(input);
+    this.numberOne = this.result;
+    this.operation = operation!;
+    this.contCommaNumberOne = 0;
+    this.contCommaNumberTwo = 0;
   }
 }

@@ -4,8 +4,8 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Nome</th>
-        <th>Ações</th>
+        <th>Name</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -13,10 +13,7 @@
         <td>{{ hero.id }}</td>
         <td>{{ hero.name }}</td>
         <td>
-          <button
-            class="btn btn-primary"
-            (click)="emissaoHeroiSelecionado(hero)"
-          >
+          <button class="btn btn-primary" (click)="heroSelected(hero)">
             Selecionar
           </button>
         </td>

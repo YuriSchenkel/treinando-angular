@@ -3,9 +3,9 @@
     <span class="label">ID: {{ hero.id }}</span>
   </div>
   <div class="campoEditar">
-    <span class="label">Nome:</span>
+    <span class="label">Name:</span>
     <input type="text" class="form-control" [(ngModel)]="hero.name" />
   </div>
-  <button class="btnSalvar" (click)="emissaoSalvou(hero)">Salvar</button>
-  <button class="btnFechar" (click)="emissaoFechou()">X</button>
+  <button class="btnSalvar" (click)="saveHero(hero)">Save</button>
+  <button class="btnFechar" (click)="closeEdition()">X</button>
 </div>

@@ -1,7 +1,7 @@
 <h2>Calculadora</h2>
 <div class="row">
   <div class="calculator">
-    <input type="text" class="display" disabled [(ngModel)]="visor" />
+    <input type="text" class="display" disabled [(ngModel)]="display" />
     <div class="keys">
       <button (click)="onClickNumber('7')">7</button>
       <button (click)="onClickNumber('8')">8</button>
@@ -19,16 +19,10 @@
       <button (click)="onClickNumber('0')">0</button>
       <button (click)="onClickNumber('.')">,</button>
       <button (click)="onClickOperation(' + ')">+</button>
-      <button class="sumiu"></button>
-      <button class="sumiu"></button>
-      <button (click)="onClickHistorico()">History</button>
+      <button class="hide"></button>
+      <button class="hide"></button>
+      <button class="hide"></button>
       <button (click)="onClickEqual()">=</button>
     </div>
-  </div>
-  <div *ngIf="escolheuHistorico">
-    <app-historico
-      [historicoCalculadora]="historicoCalculadora"
-      (emissaoFecharHistorico)="onClickFecharHistorico()"
-    ></app-historico>
   </div>
 </div>

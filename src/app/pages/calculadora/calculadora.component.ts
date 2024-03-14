@@ -7,39 +7,25 @@ import CalculadoraInterface from 'src/app/interfaces/calculadora.interface';
   styleUrls: ['./calculadora.component.css'],
 })
 export class CalculadoraComponent {
-  @Input() visor: string = '0';
-  @Input() historicoCalculadora: CalculadoraInterface[] = [];
-  @Input() escolheuHistorico: boolean = false;
-  @Output() emissaoNumero: EventEmitter<string> = new EventEmitter<string>();
-  @Output() emissaoClear: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() emissaoOperacao: EventEmitter<string> = new EventEmitter<string>();
-  @Output() emissaoIgual: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() emissaoHistorico: EventEmitter<boolean> =
-    new EventEmitter<boolean>();
-  @Output() emissaoFecharHistorico: EventEmitter<boolean> =
-    new EventEmitter<boolean>();
+  @Input() display: string = '0';
+  @Output() emitNumber: EventEmitter<string> = new EventEmitter<string>();
+  @Output() emitClear: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() emitOperation: EventEmitter<string> = new EventEmitter<string>();
+  @Output() emitEquals: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   onClickNumber(numero: string) {
-    this.emissaoNumero.emit(numero);
+    this.emitNumber.emit(numero);
   }
 
   onClickClear() {
-    this.emissaoClear.emit();
+    this.emitClear.emit();
   }
 
   onClickOperation(operacao: string) {
-    this.emissaoOperacao.emit(operacao);
+    this.emitOperation.emit(operacao);
   }
 
   onClickEqual() {
-    this.emissaoIgual.emit();
-  }
-
-  onClickHistorico() {
-    this.emissaoHistorico.emit();
-  }
-
-  onClickFecharHistorico() {
-    this.emissaoFecharHistorico.emit();
+    this.emitEquals.emit();
   }
 }

@@ -3,25 +3,23 @@
   <table class="styled-table">
     <thead>
       <tr>
-        <th>Nome</th>
-        <th>Idade</th>
+        <th>Name</th>
+        <th>Age</th>
         <th>E-mail</th>
-        <th>Profissão</th>
-        <th>Ações</th>
+        <th>Profession</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let usuario of usuarios; let i = index">
-        <td>{{ usuario.nome }}</td>
-        <td>{{ usuario.idade }}</td>
-        <td>{{ usuario.email }}</td>
-        <td>{{ usuario.profissao }}</td>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{ user.nome }}</td>
+        <td>{{ user.idade }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.profissao }}</td>
         <td>
-          <button class="btn btn-success" (click)="editarUsuario(usuario)">
-            Editar
-          </button>
-          <button class="btn btn-danger" (click)="excluirUsuario(usuario.id)">
-            Excluir
+          <button class="btn btn-success" (click)="userEdit(user)">Edit</button>
+          <button class="btn btn-danger" (click)="userDelete(user.id)">
+            Delete
           </button>
         </td>
       </tr>

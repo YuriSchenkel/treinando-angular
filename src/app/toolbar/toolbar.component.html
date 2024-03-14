@@ -1,6 +1,6 @@
 <mat-toolbar>
   <span>My Application</span>
-  <ng-container *ngFor="let button of btnEscolha">
+  <ng-container *ngFor="let button of chooseBtn">
     <a mat-button (click)="onClick(button)">{{ button }}</a>
   </ng-container>
 </mat-toolbar>

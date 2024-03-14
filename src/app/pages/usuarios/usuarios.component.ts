@@ -7,16 +7,17 @@ import { UsuariosModel } from '../../model/usuario.model';
   styleUrls: ['./usuarios.component.css'],
 })
 export class UsuariosComponent {
-  @Input() usuarios: UsuariosModel[] = [];
-  @Output() indexExcluir: EventEmitter<number> = new EventEmitter<number>();
-  @Output() emissaoDeEdicao: EventEmitter<UsuariosModel> =
+  @Input() users: UsuariosModel[] = [];
+  @Output() emitterDeleteIndex: EventEmitter<number> =
+    new EventEmitter<number>();
+  @Output() emitterEdition: EventEmitter<UsuariosModel> =
     new EventEmitter<UsuariosModel>();
 
-  editarUsuario(user?: UsuariosModel) {
-    this.emissaoDeEdicao.emit(user);
+  userEdit(user?: UsuariosModel) {
+    this.emitterEdition.emit(user);
   }
 
-  excluirUsuario(id: number) {
-    this.indexExcluir.emit(id);
+  userDelete(id: number) {
+    this.emitterDeleteIndex.emit(id);
   }
 }

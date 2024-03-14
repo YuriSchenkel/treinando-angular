@@ -8,9 +8,9 @@ import Hero from 'src/app/interfaces/heroes.interface';
 })
 export class HeroesComponent {
   @Input() heroes: Hero[] = [];
-  @Output() heroiSelecionado: EventEmitter<Hero> = new EventEmitter<Hero>();
+  @Output() emitterHeroSelected: EventEmitter<Hero> = new EventEmitter<Hero>();
 
-  emissaoHeroiSelecionado(hero: Hero) {
-    this.heroiSelecionado.emit(hero);
+  heroSelected(hero: Hero) {
+    this.emitterHeroSelected.emit(hero);
   }
 }
