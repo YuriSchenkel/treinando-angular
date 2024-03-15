@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { usuariosMock } from 'src/app/mock/usuarios.mock';
+import { usuariosMock } from 'src/app/core/mock/usuarios.mock';
 
 import { Injectable } from '@angular/core';
 

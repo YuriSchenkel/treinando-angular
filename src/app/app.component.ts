@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuariosModel } from './model/usuario.model';
-import { usuariosMock } from './mock/usuarios.mock';
-import { heroesMock } from './mock/heroes.mock';
-import { HeroisModel } from './model/heroi.model';
-import { buttonMock } from './mock/button.mock';
-import CalculadoraInterface from './interfaces/calculadora.interface';
-
+import { UsuariosModel } from './core/model/usuario.model';
+import { usuariosMock } from './core/mock/usuarios.mock';
+import { heroesMock } from './core/mock/heroes.mock';
+import { HeroisModel } from './core/model/heroi.model';
+import { buttonMock } from './core/mock/button.mock';
+import CalculadoraInterface from './shared/components/interfaces/calculadora.interface';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -87,7 +86,7 @@ export class AppComponent implements OnInit {
   }
 
   onReceiveNumber(number: string) {
-    let verificacao = true;
+    let verification = true;
 
     if (this.validationReceiveEquals) {
       this.contOperation = 0;
@@ -101,7 +100,7 @@ export class AppComponent implements OnInit {
     }
 
     if (this.contCommaNumberOne > 1) {
-      verificacao = false;
+      verification = false;
       this.contCommaNumberOne--;
     }
 
@@ -114,21 +113,25 @@ export class AppComponent implements OnInit {
       this.labelForNumberTwo === '' &&
       this.contCommaNumberTwo > 0
     ) {
-      verificacao = false;
+      verification = false;
       this.labelDisplay += '0.';
       this.labelForNumberTwo = '0.';
       this.numberTwo = Number(this.labelForNumberTwo);
     }
 
+    if (this.labelForNumberTwo === '0' && number === '0') {
+      verification = false;
+    }
+
     if (this.contCommaNumberTwo > 1) {
-      verificacao = false;
+      verification = false;
       this.contCommaNumberTwo--;
     }
 
     if (this.labelDisplay === '0' && number !== '.') {
       this.labelDisplay = '';
     }
-    if (verificacao) {
+    if (verification) {
       this.labelDisplay += number;
       if (this.contOperation > 0) {
         this.labelForNumberTwo += number;
@@ -152,19 +155,19 @@ export class AppComponent implements OnInit {
   }
 
   onReceiveOperation(operation: string) {
-    let verificacao = true;
+    let verification = true;
 
-    if (this.numberTwo !== 0 && this.contOperation > 0 && verificacao) {
-      verificacao = false;
+    if (this.numberTwo !== 0 && this.contOperation > 0 && verification) {
+      verification = false;
       this.labelForNumberTwo = '';
       this.directOperation(operation);
       this.contOperation = 1;
     }
-    if (this.contOperation > 0 && verificacao) {
+    if (this.contOperation > 0 && verification) {
       const string = this.labelDisplay.slice(0, -3);
       this.labelDisplay = string;
     }
-    if (verificacao) {
+    if (verification) {
       this.labelDisplay += operation;
       this.operation = operation;
       this.contOperation++;

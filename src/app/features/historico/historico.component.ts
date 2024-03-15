@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import CalculadoraInterface from 'src/app/interfaces/calculadora.interface';
+import CalculadoraInterface from 'src/app/core/interfaces/calculadora.interface';
 
 @Component({
   selector: 'app-historico',

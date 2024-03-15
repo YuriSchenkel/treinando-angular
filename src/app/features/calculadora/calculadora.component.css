@@ -1,13 +1,14 @@
 h2 {
   text-align: center;
+  padding: 10px;
 }
 .calculator {
+  border: 1px solid black;
   margin-left: 500px;
   height: 380px;
   width: 360px;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
 }

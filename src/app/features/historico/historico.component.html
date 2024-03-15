@@ -1,0 +1,20 @@
+<h2>History</h2>
+
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Number One</th>
+      <th>Operator</th>
+      <th>Number Two</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let history of historyCalculator">
+      <td>{{ history.numberOne }}</td>
+      <td>{{ history.operation }}</td>
+      <td>{{ history.numberTwo }}</td>
+      <td>{{ history.result }}</td>
+    </tr>
+  </tbody>
+</table>

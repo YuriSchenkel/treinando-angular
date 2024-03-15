@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { UsuariosModel } from 'src/app/model/usuario.model';
+import { UsuariosModel } from 'src/app/core/model/usuario.model';
 
 @Component({
   selector: 'app-usuario-component',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import movieInterface from 'src/app/interfaces/filmes.interface';
+import movieInterface from 'src/app/core/interfaces/filmes.interface';
 
 @Component({
   selector: 'app-list-render',
