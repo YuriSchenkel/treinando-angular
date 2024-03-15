@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Usuários</h2>
+  <h2>Users</h2>
   <table class="styled-table">
     <thead>
       <tr>
@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users; let i = index">
+      <tr *ngFor="let user of users">
         <td>{{ user.nome }}</td>
         <td>{{ user.idade }}</td>
         <td>{{ user.email }}</td>

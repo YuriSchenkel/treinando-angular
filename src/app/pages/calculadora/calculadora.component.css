@@ -1,5 +1,8 @@
+h2 {
+  text-align: center;
+}
 .calculator {
-  margin-left: 450px;
+  margin-left: 500px;
   height: 380px;
   width: 360px;
   background-color: #fff;
