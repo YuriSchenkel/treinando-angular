@@ -1,11 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { usuariosMock } from 'src/app/core/mock/usuarios.mock';
 import { UsuariosModel } from 'src/app/core/model/usuario.model';
 
 @Component({
@@ -13,27 +8,19 @@ import { UsuariosModel } from 'src/app/core/model/usuario.model';
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.css'],
 })
-export class UsuarioComponent implements OnInit, OnChanges {
-  @Input() user: UsuariosModel = new UsuariosModel();
-  @Output() emitterSaveUser: EventEmitter<UsuariosModel> =
-    new EventEmitter<UsuariosModel>();
-  @Output() emitterCloseWindow: EventEmitter<boolean> =
-    new EventEmitter<boolean>();
+export class UsuarioComponent implements OnInit {
+  public id = Number(this.route.snapshot.paramMap.get('id'));
+  public user: UsuariosModel = new UsuariosModel();
+  public index = usuariosMock.findIndex((el) => this.id === el.id);
 
-  ngOnChanges(): void {
-    this.user;
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    console.log(this.user);
+    const meuRota = this.route;
+    this.user = usuariosMock[this.index];
   }
 
-  saveUser() {
-    this.emitterSaveUser.emit(this.user);
-  }
-
-  fecharEdicao() {
-    const fecharJanela = false;
-    this.emitterCloseWindow.emit(fecharJanela);
+  saveUser(user: UsuariosModel) {
+    usuariosMock[this.index] = user;
   }
 }

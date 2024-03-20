@@ -13,7 +13,11 @@
         <td>{{ hero.id }}</td>
         <td>{{ hero.name }}</td>
         <td>
-          <button class="btn btn-primary" (click)="heroSelected(hero)">
+          <button
+            class="btn btn-primary"
+            (click)="selectHero(hero.id)"
+            [routerLink]="['/edit-hero']"
+          >
             Select
           </button>
         </td>

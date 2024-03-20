@@ -1,6 +1,14 @@
+.row {
+  margin-left: 645px;
+}
 h2 {
-  text-align: center;
   margin-top: 30px;
+}
+button {
+  background-color: #8b0000;
+  margin-top: 5px;
+  width: 35px;
+  height: 35px;
 }
 
 p {
@@ -15,7 +23,7 @@ p {
   font-family: sans-serif;
 }
 .styled-table thead tr {
-  background-color: black;
+  background-color: #191970;
   color: #ffffff;
   text-align: left;
 }
@@ -31,9 +39,9 @@ p {
   background-color: #f3f3f3;
 }
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #191970;
 }
 .styled-table tbody tr.active-row {
   font-weight: bold;
-  color: black;
+  color: #191970;
 }

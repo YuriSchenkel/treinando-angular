@@ -17,8 +17,13 @@
         <td>{{ user.email }}</td>
         <td>{{ user.profissao }}</td>
         <td>
-          <button class="btn btn-success" (click)="userEdit(user)">Edit</button>
-          <button class="btn btn-danger" (click)="userDelete(user.id)">
+          <button class="btn-edit btn btn-primary" (click)="editUser(user.id)">
+            Edit
+          </button>
+          <button
+            class="btn-delete btn btn-danger"
+            (click)="deleteUser(user.id)"
+          >
             Delete
           </button>
         </td>

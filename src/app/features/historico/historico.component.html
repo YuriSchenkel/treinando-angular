@@ -1,5 +1,6 @@
-<h2>History</h2>
-
+<div class="row">
+  <h2>Historic</h2>
+</div>
 <table class="styled-table">
   <thead>
     <tr>
@@ -7,10 +8,11 @@
       <th>Operator</th>
       <th>Number Two</th>
       <th>Result</th>
+      <button class="btn btn-danger" (click)="onCloseHistoric()">X</button>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let history of historyCalculator">
+    <tr *ngFor="let history of receiveCalculatorHistory">
       <td>{{ history.numberOne }}</td>
       <td>{{ history.operation }}</td>
       <td>{{ history.numberTwo }}</td>

@@ -1,5 +1,4 @@
-import Hero from '../interfaces/heroes.interface';
-
+import Hero from 'src/app/features/herois/herois.interface';
 export const heroesMock: Hero[] = [
   { id: 12, name: 'Dr. Nice' },
   { id: 13, name: 'Bombasto' },

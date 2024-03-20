@@ -28,14 +28,15 @@
   color: blue;
 }
 h2 {
-  color: blue;
+  color: black;
+  text-align: center;
 }
-.btnExcluir {
-  background-color: red;
-  margin-left: 5px;
+.btn-fechar {
+  background-color: #8b0000;
+  margin-left: 50px;
 }
-.btnEditar {
-  background-color: paleturquoise;
+.btn-salvar {
+  background-color: #006400;
 }
 .flagEditar {
   width: 80%;

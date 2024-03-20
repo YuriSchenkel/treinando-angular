@@ -1,0 +1,6 @@
+<mat-toolbar class="toolbar">
+  <span>My Application</span>
+  <ng-container *ngFor="let route of routesList">
+    <a mat-button [routerLink]="[route.routerLink]">{{ route.label }}</a>
+  </ng-container>
+</mat-toolbar>

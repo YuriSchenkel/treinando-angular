@@ -1,24 +1,27 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { heroesMock } from 'src/app/core/mock/heroes.mock';
 import { HeroisModel } from 'src/app/core/model/heroi.model';
+import { HeroisModule } from '../herois/herois.module';
 
 @Component({
   selector: 'app-heroi',
   templateUrl: './heroi.component.html',
   styleUrls: ['./heroi.component.css'],
 })
-export class HeroiComponent {
-  @Input() hero: HeroisModel = new HeroisModel();
-  @Output() emitterSaveHero: EventEmitter<HeroisModel> =
-    new EventEmitter<HeroisModel>();
-  @Output() emitterCloseEdition: EventEmitter<boolean> =
-    new EventEmitter<boolean>();
+export class HeroiComponent implements OnInit {
+  public id = Number(this.route.snapshot.paramMap.get('id'));
+  public hero: HeroisModel = new HeroisModel();
+  public index = heroesMock.findIndex((el) => this.id === el.id);
 
-  saveHero(hero: HeroisModel) {
-    this.emitterSaveHero.emit(hero);
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const meuRota = this.route;
+    this.hero = heroesMock[this.index];
   }
 
-  closeEdition() {
-    const fechou = false;
-    this.emitterCloseEdition.emit(fechou);
+  saveHero(hero: HeroisModel) {
+    heroesMock[this.index] = hero;
   }
 }

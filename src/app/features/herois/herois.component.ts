@@ -1,16 +1,21 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import Hero from 'src/app/core/interfaces/heroes.interface';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { heroesMock } from 'src/app/core/mock/heroes.mock';
+import { HeroisModel } from 'src/app/core/model/heroi.model';
 @Component({
   selector: 'app-herois',
   templateUrl: './herois.component.html',
   styleUrls: ['./herois.component.css'],
 })
-export class HeroesComponent {
-  @Input() heroes: Hero[] = [];
-  @Output() emitterHeroSelected: EventEmitter<Hero> = new EventEmitter<Hero>();
+export class HeroesComponent implements OnInit {
+  public heroes: HeroisModel[] = [];
 
-  heroSelected(hero: Hero) {
-    this.emitterHeroSelected.emit(hero);
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.heroes = heroesMock;
+  }
+  selectHero(id: number) {
+    this.router.navigate([`edit-hero/${id}`]);
   }
 }

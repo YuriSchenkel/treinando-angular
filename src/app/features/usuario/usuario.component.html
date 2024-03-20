@@ -1,4 +1,5 @@
 <div class="flagEditar">
+  <h2>Edit</h2>
   <div class="campoEditar">
     <span class="label">Name:</span>
     <input type="text" class="form-control" [(ngModel)]="user.nome" />
@@ -15,8 +16,16 @@
     <span class="label">Profession:</span>
     <input type="text" class="form-control" [(ngModel)]="user.profissao" />
     <div class="class-row">
-      <button class="btnSalvar" (click)="saveUser()">Salvar</button>
-      <button class="btnFechar" (click)="fecharEdicao()">X</button>
+      <button
+        class="btn-salvar btn btn-success"
+        (click)="saveUser(user)"
+        [routerLink]="['/users']"
+      >
+        Salvar
+      </button>
+      <button class="btn-fechar btn btn-danger" [routerLink]="['/users']">
+        X
+      </button>
     </div>
   </div>
 </div>

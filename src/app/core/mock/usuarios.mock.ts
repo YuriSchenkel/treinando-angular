@@ -7,7 +7,6 @@ export const usuariosMock: UsuariosModel[] = [
     nome: 'Airton',
     email: 'airton@xpert.com.br',
     profissao: 'Desenvolvedor',
-    editou: false,
   },
   {
     id: 2,
@@ -15,7 +14,6 @@ export const usuariosMock: UsuariosModel[] = [
     nome: 'Yuri',
     email: 'yuri.teze@xpert.com.br',
     profissao: 'Desenvolvedor Estagiário',
-    editou: false,
   },
   {
     id: 3,
@@ -23,6 +21,5 @@ export const usuariosMock: UsuariosModel[] = [
     nome: 'Marcelo',
     email: 'marcelo@emxbrasil.com.br',
     profissao: 'Consultor',
-    editou: false,
   },
 ];
