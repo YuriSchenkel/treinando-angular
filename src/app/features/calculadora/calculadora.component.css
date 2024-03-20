@@ -32,6 +32,11 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
+
+.btn-equals {
+  background-color: darkblue;
+  color: white;
+}
 .clear {
   grid-column: span 2;
 }

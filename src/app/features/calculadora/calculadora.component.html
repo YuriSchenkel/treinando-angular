@@ -22,13 +22,10 @@
       <button class="hide"></button>
       <button class="hide"></button>
       <button (click)="onChooseHistoric()">Historic</button>
-      <button (click)="onClickEqual()">=</button>
+      <button class="btn-equals" (click)="onClickEqual()">=</button>
     </div>
   </div>
 </div>
 <div *ngIf="chooseHistoric">
-  <app-historico
-    [receiveCalculatorHistory]="historyCalculator"
-    (emitterCloseHistoric)="onCloseHistoric()"
-  ></app-historico>
+  <app-historico [receiveCalculatorHistory]="historyCalculator"></app-historico>
 </div>

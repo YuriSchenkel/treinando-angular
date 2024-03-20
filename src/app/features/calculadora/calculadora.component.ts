@@ -11,10 +11,13 @@ export class CalculadoraComponent {
   public numberTwo: number = 0;
   public operation: string = '';
   public labelForNumberTwo: string = '';
-  public lengthDisplay: number = 0;
   public result: number = 0;
   public contCommaNumberOne: number = 0;
   public contCommaNumberTwo: number = 0;
+  public contCaseNumber1: number = 0;
+  public contCaseNumber2: number = 0;
+  public contNumberPoints1: number = 0;
+  public contNumberPoints2: number = 0;
   public contOperation: number = 0;
   public validationReceiveEquals: boolean = false;
   public validationDirectOperation: boolean = false;
@@ -25,12 +28,9 @@ export class CalculadoraComponent {
     this.chooseHistoric = true;
   }
 
-  onCloseHistoric() {
-    this.chooseHistoric = false;
-  }
-
   onClickNumber(number: string) {
     let verification = true;
+    this.chooseHistoric = false;
 
     if (this.validationReceiveEquals) {
       this.contOperation = 0;
@@ -75,30 +75,71 @@ export class CalculadoraComponent {
     if (this.displayLabel === '0' && number !== '.') {
       this.displayLabel = '';
     }
+
     if (verification) {
-      this.displayLabel += number;
+      let pointPosition: number = 0;
       if (this.contOperation > 0) {
+        this.contCaseNumber2++;
+        if (this.contCaseNumber2 % 4 === 0) {
+          this.contNumberPoints2++;
+          if (this.contNumberPoints2 > 1) {
+            pointPosition = this.contNumberPoints2 + this.contNumberPoints2 * 2;
+          } else {
+            pointPosition = 1;
+          }
+          let label: string = this.labelForNumberTwo;
+          label = label.substring(pointPosition);
+          let length = label.length;
+          let slicedLabel = this.displayLabel.slice(
+            0,
+            this.displayLabel.length - length
+          );
+          this.displayLabel = slicedLabel + '.';
+          this.displayLabel += label + number;
+        } else {
+          this.displayLabel += number;
+        }
         this.labelForNumberTwo += number;
         this.numberTwo = Number(this.labelForNumberTwo);
         this.validationDirectOperation = false;
       } else {
+        this.contCaseNumber1++;
+        if (String(this.numberOne).length > 3) {
+          let label: string = String(this.numberOne);
+          label = label.substring(pointPosition);
+          let length = label.length;
+          let slicedLabel = this.displayLabel.slice(
+            0,
+            this.displayLabel.length - length
+          );
+          this.displayLabel = slicedLabel + '.';
+          this.displayLabel += label + number;
+        } else {
+          this.displayLabel += number;
+        }
         this.numberOne = Number(this.displayLabel);
       }
     }
   }
 
   onClickClear() {
+    this.chooseHistoric = false;
     this.displayLabel = '0';
     this.contCommaNumberOne = 0;
     this.contCommaNumberTwo = 0;
     this.contOperation = 0;
+    this.contCaseNumber1 = 0;
+    this.contCaseNumber2 = 0;
     this.numberTwo = 0;
     this.numberOne = 0;
     this.labelForNumberTwo = '';
     this.operation = '';
+    this.contNumberPoints1 = 0;
+    this.contNumberPoints2 = 0;
   }
 
   onClickOperation(operation: string) {
+    this.chooseHistoric = false;
     let verification = true;
 
     if (this.numberTwo !== 0 && this.contOperation > 0 && verification) {
@@ -136,6 +177,7 @@ export class CalculadoraComponent {
   }
 
   onClickEqual() {
+    this.chooseHistoric = false;
     switch (this.operation) {
       case ' + ':
         this.addition();
@@ -177,6 +219,10 @@ export class CalculadoraComponent {
     this.operation = operation!;
     this.contCommaNumberOne = 0;
     this.contCommaNumberTwo = 0;
+    this.contCaseNumber1 = 0;
+    this.contCaseNumber2 = 0;
+    this.contNumberPoints1 = 0;
+    this.contNumberPoints2 = 0;
   }
 
   subtraction(operation?: string) {
@@ -200,6 +246,10 @@ export class CalculadoraComponent {
     this.operation = operation!;
     this.contCommaNumberOne = 0;
     this.contCommaNumberTwo = 0;
+    this.contCaseNumber1 = 0;
+    this.contCaseNumber2 = 0;
+    this.contNumberPoints1 = 0;
+    this.contNumberPoints2 = 0;
   }
 
   multiplication(operation?: string) {
@@ -222,6 +272,10 @@ export class CalculadoraComponent {
     this.operation = operation!;
     this.contCommaNumberOne = 0;
     this.contCommaNumberTwo = 0;
+    this.contCaseNumber1 = 0;
+    this.contCaseNumber2 = 0;
+    this.contNumberPoints1 = 0;
+    this.contNumberPoints2 = 0;
   }
 
   division(operation?: string) {
@@ -245,5 +299,9 @@ export class CalculadoraComponent {
     this.operation = operation!;
     this.contCommaNumberOne = 0;
     this.contCommaNumberTwo = 0;
+    this.contCaseNumber1 = 0;
+    this.contCaseNumber2 = 0;
+    this.contNumberPoints1 = 0;
+    this.contNumberPoints2 = 0;
   }
 }
