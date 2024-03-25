@@ -12,21 +12,28 @@ import { HistoricoModule } from './features/historico/historico.module';
 import { HeroiModule } from './features/heroi/heroi.module';
 import { FormsModule } from '@angular/forms';
 import { BodyModule } from './core/components/body/body.module';
+import { GamesModule } from './features/games/games.module';
+import { TemperaturaModule } from './features/temperatura/temperatura.module';
+import { FooterComponent } from './core/components/footer/footer.component';
+import { FooterModule } from './core/components/footer/footer.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AppRoutingModule,
     BrowserModule,
+    BodyModule,
+    CalculadoraModule,
+    FooterModule,
     FormsModule,
-    ToolbarModule,
-    UsuariosModule,
-    UsuarioModule,
+    GamesModule,
     HeroiModule,
     HeroisModule,
     HistoricoModule,
-    CalculadoraModule,
-    AppRoutingModule,
-    BodyModule,
+    TemperaturaModule,
+    ToolbarModule,
+    UsuarioModule,
+    UsuariosModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

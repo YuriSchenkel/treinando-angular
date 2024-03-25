@@ -8,13 +8,8 @@ import CalculadoraInterface from 'src/app/features/calculadora/calculadora.inter
 export class HistoricoComponent implements OnInit {
   public calculatorHistory: CalculadoraInterface[] = [];
   @Input() receiveCalculatorHistory: CalculadoraInterface[] = [];
-  @Output() emitterCloseHistoric: EventEmitter<boolean> = new EventEmitter();
 
   ngOnInit(): void {
     this.calculatorHistory = this.receiveCalculatorHistory;
-  }
-
-  onCloseHistoric() {
-    this.emitterCloseHistoric.emit();
   }
 }

@@ -12,10 +12,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-        <td>{{ user.nome }}</td>
-        <td>{{ user.idade }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.age }}</td>
         <td>{{ user.email }}</td>
-        <td>{{ user.profissao }}</td>
+        <td>{{ user.profession }}</td>
         <td>
           <button class="btn-edit btn btn-primary" (click)="editUser(user.id)">
             Edit

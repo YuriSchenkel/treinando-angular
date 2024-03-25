@@ -1,20 +1,19 @@
-<div class="flagEditar">
+<form
+  class="flagEditar"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="formGroup"
+  #formDir="ngForm"
+>
   <h2>Edit Hero</h2>
   <div class="campoEditar">
     <span class="label">ID: {{ hero.id }}</span>
   </div>
   <div class="campoEditar">
     <span class="label">Name:</span>
-    <input type="text" class="form-control" [(ngModel)]="hero.name" />
+    <input type="text" class="form-control" formControlName="name" required />
   </div>
-  <button
-    class="btn-salvar btn btn-success"
-    (click)="saveHero(hero)"
-    [routerLink]="['/heroes']"
-  >
-    Save
-  </button>
+  <button type="submit" class="btn-salvar btn btn-success">Save</button>
   <button class="btn-fechar btn btn-danger" [routerLink]="['/heroes']">
     X
   </button>
-</div>
+</form>

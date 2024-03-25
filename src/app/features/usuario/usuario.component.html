@@ -1,31 +1,39 @@
-<div class="flagEditar">
+<form
+  class="flagEditar"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="formGroup"
+  #formDir="ngForm"
+>
   <h2>Edit</h2>
   <div class="campoEditar">
     <span class="label">Name:</span>
-    <input type="text" class="form-control" [(ngModel)]="user.nome" />
+    <input type="text" class="form-control" formControlName="name" required />
   </div>
   <div class="campoEditar">
     <span class="label">Age:</span>
-    <input type="number" class="form-control" [(ngModel)]="user.idade" />
+    <input type="number" class="form-control" formControlName="age" required />
   </div>
   <div class="campoEditar">
     <span class="label">E-mail:</span>
-    <input type="email" class="form-control" [(ngModel)]="user.email" />
+    <input type="email" class="form-control" formControlName="email" required />
+  </div>
+  <div class="campoEditar">
+    <span class="label">CPF:</span>
+    <input type="number" class="form-control" formControlName="cpf" required />
   </div>
   <div class="campoEditar">
     <span class="label">Profession:</span>
-    <input type="text" class="form-control" [(ngModel)]="user.profissao" />
-    <div class="class-row">
-      <button
-        class="btn-salvar btn btn-success"
-        (click)="saveUser(user)"
-        [routerLink]="['/users']"
-      >
-        Salvar
-      </button>
-      <button class="btn-fechar btn btn-danger" [routerLink]="['/users']">
-        X
-      </button>
-    </div>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="profession"
+      required
+    />
   </div>
-</div>
+  <div class="class-row">
+    <input type="submit" class="btn-salvar btn btn-success" />
+    <button class="btn-fechar btn btn-danger" [routerLink]="['/users']">
+      X
+    </button>
+  </div>
+</form>

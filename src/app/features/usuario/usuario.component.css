@@ -30,15 +30,7 @@ h2 {
   display: block;
   font-weight: bold;
 }
-.flagEditar input[type="text"],
-.flagEditar input[type="number"],
-.flagEditar input[type="email"] {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
+
 .flagEditar .buttons-container {
   text-align: right;
 }
@@ -49,17 +41,14 @@ h2 {
   border-radius: 3px;
   cursor: pointer;
 }
-.flagEditar button.btnSalvar {
-  margin-top: 15px;
-  background-color: #4caf50;
-  color: white;
-}
-.flagEditar button.btnFechar {
-  margin-top: 15px;
-  background-color: #f44336;
-  color: white;
-}
 
 .class-row {
   text-align: start;
+}
+
+.validationError p {
+  color: red;
+  margin-top: 0.4em;
+  border-left: 3px solid red;
+  border-left: 0.2em;
 }
