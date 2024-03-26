@@ -16,6 +16,8 @@ import { GamesModule } from './features/games/games.module';
 import { TemperaturaModule } from './features/temperatura/temperatura.module';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { FooterModule } from './core/components/footer/footer.module';
+import { LoginComponent } from './features/login/login.component';
+import { LoginModule } from './features/login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +32,7 @@ import { FooterModule } from './core/components/footer/footer.module';
     HeroiModule,
     HeroisModule,
     HistoricoModule,
+    LoginModule,
     TemperaturaModule,
     ToolbarModule,
     UsuarioModule,

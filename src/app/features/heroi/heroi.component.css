@@ -88,3 +88,10 @@ h2 {
 .class-row {
   text-align: start;
 }
+
+.validationError p {
+  color: red;
+  margin-top: 0.4em;
+  border-left: 3px solid red;
+  padding-left: 0.2em;
+}

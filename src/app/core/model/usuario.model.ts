@@ -5,6 +5,11 @@ export class UsuariosModel {
   public email: string;
   public cpf: number;
   public profession: string;
+  public cep?: number;
+  public cidade?: string;
+  public uf?: string;
+  public rua?: string;
+  public bairro?: string;
 
   constructor() {
     this.id = 0;

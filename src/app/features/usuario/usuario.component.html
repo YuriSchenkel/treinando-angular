@@ -4,22 +4,36 @@
   [formGroup]="formGroup"
   #formDir="ngForm"
 >
+  <h1>{{ address.cep }}</h1>
+  <h1>{{ address.bairro }}</h1>
   <h2>Edit</h2>
   <div class="campoEditar">
     <span class="label">Name:</span>
     <input type="text" class="form-control" formControlName="name" required />
+    <div class="validationError" *ngIf="formGroup.get('name')?.invalid">
+      <p>Name is required!</p>
+    </div>
   </div>
   <div class="campoEditar">
     <span class="label">Age:</span>
     <input type="number" class="form-control" formControlName="age" required />
+    <div class="validationError" *ngIf="formGroup.get('age')?.invalid">
+      <p>Age is required!</p>
+    </div>
   </div>
   <div class="campoEditar">
     <span class="label">E-mail:</span>
     <input type="email" class="form-control" formControlName="email" required />
+    <div class="validationError" *ngIf="formGroup.get('email')?.invalid">
+      <p>E-mail is required!</p>
+    </div>
   </div>
   <div class="campoEditar">
     <span class="label">CPF:</span>
     <input type="number" class="form-control" formControlName="cpf" required />
+    <div class="validationError" *ngIf="formGroup.get('cpf')?.invalid">
+      <p>CPF is required!</p>
+    </div>
   </div>
   <div class="campoEditar">
     <span class="label">Profession:</span>
@@ -29,6 +43,9 @@
       formControlName="profession"
       required
     />
+    <div class="validationError" *ngIf="formGroup.get('profession')?.invalid">
+      <p>Profession is required!</p>
+    </div>
   </div>
   <div class="class-row">
     <input type="submit" class="btn-salvar btn btn-success" />

@@ -7,6 +7,7 @@ import { HeroiComponent } from './features/heroi/heroi.component';
 import { UsuarioComponent } from './features/usuario/usuario.component';
 import { GamesComponent } from './features/games/games.component';
 import { TemperaturaComponent } from './features/temperatura/temperatura.component';
+import { LoginComponent } from './features/login/login.component';
 
 const routes: Routes = [
   { path: 'calculator', component: CalculadoraComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'edit-user/:id', component: UsuarioComponent },
   { path: 'games', component: GamesComponent },
   { path: 'heroes', component: HeroesComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'temperature', component: TemperaturaComponent },
   { path: 'users', component: UsuariosComponent },
 ];
