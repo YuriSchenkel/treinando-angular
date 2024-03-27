@@ -11,13 +11,13 @@ export class TemperaturaComponent {
   public temperature: temperatureInterface = {};
   public city: string = 'Pato Branco';
 
-  constructor(private temperatureService: TemperaturaService) {
-    this.getTemperature();
-  }
+  // constructor(private temperatureService: TemperaturaService) {
+  //   this.getTemperature();
+  // }
 
-  getTemperature(): void {
-    this.temperatureService
-      .getAll(this.city)
-      .subscribe((temperature) => (this.temperature = temperature));
-  }
+  // getTemperature(): void {
+  //   this.temperatureService
+  //     .getAll(this.city)
+  //     .subscribe((temperature) => (this.temperature = temperature));
+  // }
 }

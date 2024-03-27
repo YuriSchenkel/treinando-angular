@@ -14,9 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { BodyModule } from './core/components/body/body.module';
 import { GamesModule } from './features/games/games.module';
 import { TemperaturaModule } from './features/temperatura/temperatura.module';
-import { FooterComponent } from './core/components/footer/footer.component';
 import { FooterModule } from './core/components/footer/footer.module';
-import { LoginComponent } from './features/login/login.component';
 import { LoginModule } from './features/login/login.module';
 
 @NgModule({

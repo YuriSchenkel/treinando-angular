@@ -6,6 +6,7 @@
         <th>Name</th>
         <th>Age</th>
         <th>E-mail</th>
+        <th>CPF</th>
         <th>Profession</th>
         <th>Actions</th>
       </tr>
@@ -15,6 +16,7 @@
         <td>{{ user.name }}</td>
         <td>{{ user.age }}</td>
         <td>{{ user.email }}</td>
+        <td>{{ user.cpf | cpf }}</td>
         <td>{{ user.profession }}</td>
         <td>
           <button class="btn-edit btn btn-primary" (click)="editUser(user.id)">

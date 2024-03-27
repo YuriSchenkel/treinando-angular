@@ -4,8 +4,6 @@
   [formGroup]="formGroup"
   #formDir="ngForm"
 >
-  <h1>{{ address.cep }}</h1>
-  <h1>{{ address.bairro }}</h1>
   <h2>Edit</h2>
   <div class="campoEditar">
     <span class="label">Name:</span>
@@ -30,7 +28,13 @@
   </div>
   <div class="campoEditar">
     <span class="label">CPF:</span>
-    <input type="number" class="form-control" formControlName="cpf" required />
+    <input
+      type="text"
+      class="form-control"
+      formControlName="cpf"
+      (input)="onLoadCpf()"
+      required
+    />
     <div class="validationError" *ngIf="formGroup.get('cpf')?.invalid">
       <p>CPF is required!</p>
     </div>
@@ -45,6 +49,62 @@
     />
     <div class="validationError" *ngIf="formGroup.get('profession')?.invalid">
       <p>Profession is required!</p>
+    </div>
+  </div>
+
+  <div class="campoEditar">
+    <span class="label">CEP:</span>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="0"
+      formControlName="cep"
+      (focusout)="onLoadCep()"
+      required
+    />
+    <div class="validationError" *ngIf="formGroup.get('cep')?.invalid">
+      <p>CEP is required!</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="campoEditarCidade">
+      <span class="label">Cidade:</span>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="cidade"
+        required
+      />
+      <div class="validationError" *ngIf="formGroup.get('cidade')?.invalid">
+        <p>Cidade is required!</p>
+      </div>
+    </div>
+    <div class="campoEditarUf">
+      <span class="label">UF:</span>
+      <input type="text" class="form-control" formControlName="uf" required />
+      <div class="validationError" *ngIf="formGroup.get('uf')?.invalid">
+        <p>UF is required!</p>
+      </div>
+    </div>
+  </div>
+  <div class="campoEditar">
+    <span class="label">Logradouro:</span>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="logradouro"
+      required
+    />
+    <div class="validationError" *ngIf="formGroup.get('logradouro')?.invalid">
+      <p>logradouro is required!</p>
+    </div>
+  </div>
+  <div class="campoEditar">
+    <span class="label">Bairro:</span>
+    <input type="text" class="form-control" formControlName="bairro" required />
+    <div class="validationError" *ngIf="formGroup.get('bairro')?.invalid">
+      <p>Bairro is required!</p>
     </div>
   </div>
   <div class="class-row">
