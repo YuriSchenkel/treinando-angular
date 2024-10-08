@@ -10,8 +10,6 @@ import { usuariosMock } from 'src/app/core/mock/usuarios.mock';
 import { UsuariosModel } from 'src/app/core/model/usuario.model';
 import { UsuarioService } from './usuario.service';
 import { addressInterface } from './usuario.interface';
-import { compileDeclareInjectorFromMetadata } from '@angular/compiler';
-import { first } from 'rxjs';
 
 @Component({
   selector: 'app-usuario-component',
@@ -37,7 +35,6 @@ export class UsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const meuRota = this.route;
     this.user = usuariosMock[this.index];
     this.formGroup.controls['name'].setValidators([Validators.required]);
     this.formGroup.controls['age'].setValidators([Validators.required]);
@@ -55,22 +52,34 @@ export class UsuarioComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
+    let cpfForSave = this.formGroup.controls['cpf'].value;
+    cpfForSave = cpfForSave.replace('.', '');
+    cpfForSave = cpfForSave.replace('.', '');
+    cpfForSave = cpfForSave.replace('-', '');
+    this.formGroup.controls['cpf'].setValue(cpfForSave);
+
+    let cepForSave = this.formGroup.controls['cep'].value;
+    cepForSave = cepForSave.replace('-', '');
+    this.formGroup.controls['cep'].setValue(cepForSave);
+
     usuariosMock[this.index] = this.formGroup.value;
     this.router.navigate(['/users']);
   }
 
   onLoadCep() {
-    const cep = this.formGroup.controls['cep'].value;
+    let cep = this.formGroup.controls['cep'].value;
+    cep = cep.replace('-', '');
     this.validCep(cep);
     this.getCep(cep);
   }
 
-  validCep(cep: string): void {
-    const cepValid = cep?.length === 8 ? true : false;
+  validCep(cep: string): boolean {
+    const cepValid = cep?.length <= 9 ? true : false;
 
     if (cepValid === false) {
       throw new Error('CEP Inválido');
     }
+    return cepValid;
   }
 
   getCep(cep: string) {
@@ -86,22 +95,27 @@ export class UsuarioComponent implements OnInit {
 
   onLoadCpf() {
     const cpf = this.formGroup.controls['cpf'].value;
-    this.validCpf(cpf);
-    const formatedCpf = this.getCpf(cpf);
-    this.formGroup.controls['cpf'].setValue(formatedCpf);
-    console.log(formatedCpf);
+    const cpfValid = this.validCpf(cpf);
+    if (cpfValid) {
+      const formatedCpf = this.formatCpf(cpf);
+      this.formGroup.controls['cpf'].setValue(formatedCpf);
+      console.log(formatedCpf);
+    }
   }
 
-  validCpf(cpf: string) {
-    const cpfValid = cpf.length < 14 ? true : false;
+  validCpf(cpf: string): boolean {
+    const cpfValid = cpf.length <= 14 ? true : false;
 
     if (cpfValid === false) {
       throw new Error('CPF Inválido');
     }
+    return cpfValid;
   }
 
-  getCpf(cpf: string): string {
-    if (cpf.length === 3 || cpf.length === 7) {
+  formatCpf(cpf: string): string {
+    if (cpf.length === 3) {
+      cpf += '.';
+    } else if (cpf.length === 7) {
       cpf += '.';
     } else if (cpf.length === 11) {
       cpf += '-';
@@ -109,5 +123,23 @@ export class UsuarioComponent implements OnInit {
     }
 
     return cpf;
+  }
+
+  onLoadNumberCep() {
+    const cep = this.formGroup.controls['cep'].value;
+    const cepValid = this.validCep(cep);
+    if (cepValid) {
+      const formatedCep = this.formatCep(cep);
+      this.formGroup.controls['cep'].setValue(formatedCep);
+      console.log(formatedCep);
+    }
+  }
+
+  formatCep(cep: string): string {
+    if (cep.length === 5) {
+      cep += '-';
+    }
+
+    return cep;
   }
 }

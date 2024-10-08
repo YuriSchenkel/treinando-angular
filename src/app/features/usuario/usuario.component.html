@@ -59,6 +59,7 @@
       class="form-control"
       placeholder="0"
       formControlName="cep"
+      (input)="onLoadNumberCep()"
       (focusout)="onLoadCep()"
       required
     />

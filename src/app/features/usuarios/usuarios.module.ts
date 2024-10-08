@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { UsuariosComponent } from './usuarios.component';
 import { RouterModule } from '@angular/router';
 import { UsuarioModule } from '../usuario/usuario.module';
-import { CpfPipe } from 'src/app/shared/pipes/pipe/cpf/cpf.pipe';
 import { CpfPipeModule } from 'src/app/shared/pipes/pipe/cpf/cpf-pipe.module';
 
 @NgModule({
